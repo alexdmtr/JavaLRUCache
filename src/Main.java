@@ -1,4 +1,4 @@
-import java.util.LinkedHashMap;
+
 import java.util.Map;
 
 public class Main {
@@ -8,21 +8,6 @@ public class Main {
         for (Map.Entry<K, V> entry : map.entrySet())
             System.out.printf("%s -> %s\n", entry.getKey(), entry.getValue());
         System.out.println();
-    }
-
-    static class LRUCache<K, V> extends LinkedHashMap<K, V> {
-        private int maxSize;
-        public LRUCache(int capacity) {
-            // AccessOrder: Least Recently to most recently accessed
-            super(capacity, 0.75f, true);
-            this.maxSize = capacity;
-        }
-
-        @Override
-        // Implements a removal policy for eldest entries
-        protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-            return this.size() > maxSize;
-        }
     }
 
     public static void main(String[] args) {
